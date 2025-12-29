@@ -16,7 +16,7 @@ public class ExtentReporter {
     public static ExtentTest test;
 
     public static void startReporter(){
-        sparkReporter = new ExtentSparkReporter(System.getProperty("user.dir")+"//test-output//extentReports//ExtentReport.html");
+        sparkReporter = new ExtentSparkReporter(System.getProperty("user.dir")+"//TestOutputs//ExtentReports//ExtentReport.html");
         sparkReporter.config().setDocumentTitle("Automation Test Report");
         sparkReporter.config().setReportName("Extent Report");
         sparkReporter.config().setTheme(Theme.DARK);
