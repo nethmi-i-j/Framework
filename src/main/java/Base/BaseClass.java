@@ -1,6 +1,6 @@
 package Base;
 
-import Utilities.ExtentReporter;
+import Utilities.ExtentReporterUtility;
 import Utilities.PropertyFileReader;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
@@ -28,7 +28,7 @@ public class BaseClass {
     @BeforeSuite
     public void beforeSuite(){
 
-        ExtentReporter.startReporter();
+        ExtentReporterUtility.startReporter();
 
         String logFilePath = "logs/Automation.log";
         File logFile = new File(logFilePath);
@@ -79,7 +79,7 @@ public class BaseClass {
 
     @AfterSuite
     public void afterSuite(){
-        ExtentReporter.endReport();
+        ExtentReporterUtility.endReport();
 
     }
 }

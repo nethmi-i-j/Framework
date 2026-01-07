@@ -9,7 +9,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-public class ExtentReporter {
+public class ExtentReporterUtility {
 
     public static ExtentSparkReporter sparkReporter;
     public static ExtentReports extent;
