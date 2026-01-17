@@ -3,9 +3,7 @@ package ActionDriver;
 import Utilities.PropertyFileReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -222,6 +220,77 @@ public class ActionDriver {
         }
         return optionList;
     }
+
+    // ==================== JavaScript utility Methods ===================
+
+    // Wait for the page to load
+    public void waitForPageLoad(int timeOutInSec){
+        try {
+            wait.withTimeout(Duration.ofSeconds(timeOutInSec)).until(WebDriver -> ((JavascriptExecutor)WebDriver)
+                    .executeScript("return document.readyState").equals("complete"));
+            logger.info("Page loaded successfully");
+        } catch (Exception e) {
+            logger.error("Page did not load within: " + timeOutInSec + "seconds. Exception: " + e.getMessage());
+        }
+    }
+
+    // Scroll to an element -- Added a ; at the end of script string
+    public void scrollToElement(WebElement element){
+        try{
+            //applyBorder(element,"green");
+            JavascriptExecutor js = (JavascriptExecutor)driver;
+            js.executeScript("argument[0].scrollToView(true);",element);
+        } catch (Exception e) {
+            //applyBorder(element,"red");
+            logger.error("Unable to locate element: " + e.getMessage());
+        }
+    }
+
+    // Method to scroll to the bottom of the page
+    public void scrollToBottom(){
+        try {
+            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+            logger.info("Scrolled to the bottom of the page");
+        } catch (Exception e) {
+            logger.error("Unable to scroll to the bottom",e);
+        }
+    }
+
+    // Method to boarder an element
+    public void applyBorder(WebElement element, String colour) {
+        try{
+            String script = "argument[0].style.border='3px solid " + colour + "'";
+            JavascriptExecutor js = (JavascriptExecutor)driver;
+            js.executeScript(script,element);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    // Method to click using JavaScript
+    public void clickUsingJS(WebElement element){
+        try {
+            waitForElementToBeVisible(element);
+            ((JavascriptExecutor) driver).executeScript("argument[0].click();",element);
+        } catch (Exception e) {
+            logger.error("Unable to click using Javascript",e);
+        }
+    }
+
+    // Method to highlight an element using JavaScript
+    public void highlightElementJS(WebElement element){
+        try {
+            ((JavascriptExecutor) driver).executeScript("argument[0].style.border='3px solid yellow'",element);
+        } catch (Exception e) {
+            logger.error("Unable to highlight an element using js",e);
+        }
+    }
+
+
+
+
+
+
 
 
 
