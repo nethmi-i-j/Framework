@@ -58,7 +58,7 @@ public class BaseClass {
 
     @BeforeMethod
     public void openPage(){
-        System.out.println("Setting up webDriver for: " + this.getClass().getSimpleName());
+        logger.info("Setting up webDriver for: " + this.getClass().getSimpleName());
         launchBrowser();
         configureBrowser();
         staticWait(2);
