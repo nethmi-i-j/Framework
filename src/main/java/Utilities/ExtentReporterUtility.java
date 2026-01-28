@@ -44,11 +44,20 @@ public class ExtentReporterUtility {
         test.info(message, MediaEntityBuilder.createScreenCaptureFromBase64String(base64).build());
     }
 
+    public static void stepInfo(String message){
+        test.info(message);
+    }
+
     public static void captureScreenshotAsBase64_ReportOnly_FailCase(WebDriver driver, String message){
         String base64 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
         test.fail(message, MediaEntityBuilder.createScreenCaptureFromBase64String(base64).build());
-
     }
+
+    public static void failureInfo(String message){
+        test.fail(message);
+    }
+
+
 
     public static void captureScreenshotAsBase64_ReportOnly_SkipCase(WebDriver driver, String message){
         String base64 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
