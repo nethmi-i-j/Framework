@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="QA_Reg_ModuleA_Plan1" parallel="tests" thread-count="2">
+
+    <listeners>
+        <listener class-name="Utilities.ListenerManager"> </listener>
+    </listeners>
+
+    <test name="TC001_loginUserTest">
+
+        <classes>
+            <class name="TestCases.TC001_loginUserTest"> </class>
+        </classes>
+    </test>
+
+    <test name="TC002_logoutUserTest">
+
+        <classes>
+            <class name="TestCases.TC002_logoutUserTest"> </class>
+        </classes>
+    </test>
+
+
+
+
+
+</suite>
