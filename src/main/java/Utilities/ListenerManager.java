@@ -34,13 +34,13 @@ public class ListenerManager extends BaseClass implements ITestListener, IAnnota
     public void onTestFailure(ITestResult result){
         ExtentReporterUtility.test.fail(result.getName() + "Test Case Failed");
         ExtentReporterUtility.test.fail(result.getThrowable());  // fail reason
-        ExtentReporterUtility.captureScreenshotAsBase64_ReportOnly_FailCase(driver,result.getName()+"_failed_point_screenshot");
+        ExtentReporterUtility.captureScreenshotAsBase64_ReportOnly_FailCase(getDriver(),result.getName()+"_failed_point_screenshot");
     }
 
     @Override
     public void onTestSkipped(ITestResult result){
         ExtentReporterUtility.test.skip(result.getName()+ "Test Case Skipped");
-        ExtentReporterUtility.captureScreenshotAsBase64_ReportOnly_SkipCase(driver,result.getName()+"_skipped_point_screenshot");
+        ExtentReporterUtility.captureScreenshotAsBase64_ReportOnly_SkipCase(getDriver(),result.getName()+"_skipped_point_screenshot");
 
     }
 
